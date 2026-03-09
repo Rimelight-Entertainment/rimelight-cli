@@ -82,47 +82,48 @@ const main = defineCommand({
       try {
         agentsMdContent = await readFile(agentsMdPath, "utf-8")
       } catch {
-        console.error("💥 Critical error: AGENTS.md not found!")
-        return
+        console.warn("⚠️ Warning: AGENTS.md not found. Skipping agent directions sync.")
       }
 
-      // Skip if in own repo
-      if (SHARED_ROOT === PROJECT_ROOT) {
-        console.log("ℹ️  Skipping agent generation in self-sync.")
-      } else {
-        for (const agent of AGENTS) {
-          const agentRoot = join(PROJECT_ROOT, agent.folder)
+      if (agentsMdContent) {
+        // Skip if in own repo
+        if (SHARED_ROOT === PROJECT_ROOT) {
+          console.log("ℹ️  Skipping agent generation in self-sync.")
+        } else {
+          for (const agent of AGENTS) {
+            const agentRoot = join(PROJECT_ROOT, agent.folder)
 
-          // Ensure agent directory exists and is entirely clean of old files like `.agent/skills/`
-          await rm(agentRoot, { recursive: true, force: true }).catch(() => {})
-          await mkdir(agentRoot, { recursive: true })
+            // Ensure agent directory exists and is entirely clean of old files like `.agent/skills/`
+            await rm(agentRoot, { recursive: true, force: true }).catch(() => {})
+            await mkdir(agentRoot, { recursive: true })
 
-          // Sync shared rules/workflows to agent folder
-          const sharedFolders = ["rules", "workflows", "skills"]
-          for (const folder of sharedFolders) {
-            const sourceFolder = join(SHARED_ROOT, ".agent", folder)
-            const destFolder = join(agentRoot, folder)
-            try {
-              await cp(sourceFolder, destFolder, { recursive: true, force: true })
-            } catch {
-              // Folder might not exist in .agent, that's okay
+            // Sync shared rules/workflows to agent folder
+            const sharedFolders = ["rules", "workflows", "skills"]
+            for (const folder of sharedFolders) {
+              const sourceFolder = join(SHARED_ROOT, ".agent", folder)
+              const destFolder = join(agentRoot, folder)
+              try {
+                await cp(sourceFolder, destFolder, { recursive: true, force: true })
+              } catch {
+                // Folder might not exist in .agent, that's okay
+              }
             }
+
+            // Generate agent-specific instruction file
+            const agentInstructions = agentsMdContent.replace(/\.\/\.agent/g, `./${agent.folder}`)
+
+            // Write to root
+            await writeFile(join(PROJECT_ROOT, agent.file), agentInstructions)
+
+            // Write into agent folder
+            await writeFile(join(agentRoot, agent.file), agentInstructions)
+
+            if (agent.extra) {
+              await writeFile(join(PROJECT_ROOT, agent.extra), agentInstructions)
+            }
+
+            console.log(`  ✅ ${agent.name} instructions generated`)
           }
-
-          // Generate agent-specific instruction file
-          const agentInstructions = agentsMdContent.replace(/\.\/\.agent/g, `./${agent.folder}`)
-
-          // Write to root
-          await writeFile(join(PROJECT_ROOT, agent.file), agentInstructions)
-
-          // Write into agent folder
-          await writeFile(join(agentRoot, agent.file), agentInstructions)
-
-          if (agent.extra) {
-            await writeFile(join(PROJECT_ROOT, agent.extra), agentInstructions)
-          }
-
-          console.log(`  ✅ ${agent.name} instructions generated`)
         }
       }
     }
@@ -137,9 +138,9 @@ const main = defineCommand({
 
         let updated = false
         const scripts = {
-          sync: "rimelight sync && husky && nuxt prepare",
-          "sync:agents": "rimelight sync --agents",
-          "sync:configs": "rimelight sync --configs"
+          sync: "bunx rimelight sync && husky && nuxt prepare",
+          "sync:agents": "bunx rimelight sync --agents",
+          "sync:configs": "bunx rimelight sync --configs"
         }
 
         for (const [name, command] of Object.entries(scripts)) {
