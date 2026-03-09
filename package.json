@@ -13,12 +13,12 @@
   "type": "module",
   "scripts": {
     "prepare": "husky",
-    "lint": "oxlint .",
-    "lint:fix": "oxlint . --fix",
-    "format": "oxfmt . --check",
-    "format:fix": "oxfmt .",
-    "fix": "oxlint . --fix && oxfmt .",
-    "check": "oxlint . && oxfmt . --check",
+    "lint": "oxlint -c ./oxlint.config.ts .",
+    "lint:fix": "oxlint -c ./oxlint.config.ts . --fix",
+    "format": "oxfmt -c ./.oxfmtrc.jsonc . --check",
+    "format:fix": "oxfmt -c ./.oxfmtrc.jsonc .",
+    "fix": "oxlint -c ./oxlint.config.ts . --fix && oxfmt -c ./.oxfmtrc.jsonc .",
+    "check": "oxlint -c ./oxlint.config.ts . && oxfmt -c ./.oxfmtrc.jsonc . --check",
     "sync": "bun bin/cli.ts sync"
   },
   "devDependencies": {
