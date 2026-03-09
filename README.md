@@ -1,6 +1,8 @@
 # Rimelight CLI
 
-A CLI utility for configuration synchronization across multiple projects.
+An opinionated CLI utility for configuration synchronization across multiple projects.
+
+LLM configurations are compatible with all major tools (Antigravity, Cursor, CodeX, etc.).
 
 ## Features
 
@@ -21,19 +23,19 @@ bun add -D github:Rimelight-Entertainment/rimelight-cli
 
 ### Usage
 
-Run the sync command to synchronize all local with the reference repository:
+Run the sync command to synchronize all configurations with the reference repository:
 
 ```bash
 bunx rimelight sync
 ```
 
-**Sync LLM Agent Instructions only:**
+**Sync LLM Configurations Only:**
 
 ```bash
 bunx rimelight sync --agents
 ```
 
-**Sync configurations only:**
+**Sync Workspace Configurations Only:**
 
 ```bash
 bunx rimelight sync --configs
@@ -41,13 +43,20 @@ bunx rimelight sync --configs
 
 ## Synchronized Files
 
-The CLI maintains parity for:
+The CLI maintains parity across repositories for the following files:
 
-- WebStorm (.editorconfig)
-- Bun (bunfig.toml)
-- Git (.gitignore, .husky/, commitlint.config.ts)
-- Oxlint (oxlint.config.ts & .oxlint/ rules)
-- Oxfmt (.oxfmtrc.jsonc)
+### LLM Agent Configuration
+- `AGENTS.md`
+- `.agent/rules/`
+- `.agent/skills/`
+- `.agent/workflows/`
+
+### Development Workspace
+- **WebStorm:** `.editorconfig`
+- **Bun:** `bunfig.toml`
+- **Git:** `.gitignore`, `.husky/`, `commitlint.config.ts`
+- **Oxlint:** `oxlint.config.ts` & `.oxlint/` rules
+- **Oxfmt:** `.oxfmtrc.jsonc`
 
 ## License
 
