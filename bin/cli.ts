@@ -15,7 +15,8 @@ const AGENTS = [
   { name: "Gemini", folder: ".gemini", file: "GEMINI.md" },
   { name: "Antigravity", folder: ".antigravity", file: "ANTIGRAVITY.md" },
   { name: "Claude", folder: ".claude", file: "CLAUDE.md" },
-  { name: "Cursor", folder: ".cursor", file: "CURSOR.md", extra: ".cursorrules" }
+  { name: "Cursor", folder: ".cursor", file: "CURSOR.md", extra: ".cursorrules" },
+  { name: "Agents", folder: ".agents", file: "AGENTS.md" }
 ]
 
 const DIRECT_SYNC = [
