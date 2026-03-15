@@ -20,6 +20,7 @@ const AGENTS = [
 ]
 
 const DIRECT_SYNC = [
+  "pnpm-workspace.yaml",
   ".gitignore",
   ".editorconfig",
   "vite.config.ts",
