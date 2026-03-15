@@ -12,7 +12,15 @@ export default defineConfig({
   test: {},
   lint: {
     jsPlugins: [resolve(__dirname, "./.oxlint/rimelight.js")],
-    ignorePatterns: ['dist/**', ".agent/", "AGENTS.md", "CLAUDE.md", "GEMINI.md", ".drizzle/", "src-tauri/"],
+    ignorePatterns: [
+      "dist/**",
+      ".agent/",
+      "AGENTS.md",
+      "CLAUDE.md",
+      "GEMINI.md",
+      ".drizzle/",
+      "src-tauri/"
+    ],
     options: {
       typeAware: true,
       typeCheck: true
