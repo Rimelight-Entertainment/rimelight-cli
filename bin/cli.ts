@@ -22,8 +22,6 @@ const AGENTS = [
 const DIRECT_SYNC = [
   ".gitignore",
   ".editorconfig",
-  ".husky",
-  "commitlint.config.ts",
   "vite.config.ts",
   ".oxlint"
 ]
@@ -137,9 +135,9 @@ const main = defineCommand({
 
         let updated = false
         const scripts = {
-          sync: "pnpm rimelight sync && pnpm husky && pnpm exec nuxt prepare",
-          "sync:agents": "pnpm rimelight sync --agents",
-          "sync:configs": "pnpm rimelight sync --configs"
+          sync: "vp run rimelight sync && vp run exec nuxt prepare",
+          "sync:agents": "vp run rimelight sync --agents",
+          "sync:configs": "vp run rimelight sync --configs"
         }
 
         for (const [name, command] of Object.entries(scripts)) {

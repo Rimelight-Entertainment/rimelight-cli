@@ -1,5 +1,6 @@
 {
   "name": "rimelight-cli",
+  "type": "module",
   "version": "1.0.0",
   "private": true,
   "description": "A CLI utility for configuration synchronization across multiple projects.",
@@ -10,7 +11,6 @@
   "bin": {
     "rimelight": "./bin/cli.ts"
   },
-  "type": "module",
   "scripts": {
     "sync": "tsx bin/cli.ts sync"
   },
@@ -19,11 +19,7 @@
     "tsx": "^4.21.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.4.1",
-    "@commitlint/config-conventional": "^20.4.1",
-    "@commitlint/types": "^20.5.0",
     "@types/node": "latest",
-    "husky": "^9.1.7",
     "vite-plus": "^0.1.8"
   },
   "packageManager": "pnpm@10.32.1"
