@@ -1,4 +1,4 @@
-#!/usr/bin/env bun
+#!/usr/bin/env node --import tsx
 import { cp, readFile, writeFile, mkdir, rm } from "node:fs/promises"
 import { join, dirname } from "node:path"
 import { fileURLToPath } from "node:url"
@@ -20,14 +20,12 @@ const AGENTS = [
 ]
 
 const DIRECT_SYNC = [
-  "bunfig.toml",
   ".gitignore",
   ".editorconfig",
   ".husky",
   "commitlint.config.ts",
-  "oxlint.config.ts",
-  ".oxlint",
-  ".oxfmtrc.jsonc"
+  "vite.config.ts",
+  ".oxlint"
 ]
 
 const main = defineCommand({
@@ -139,9 +137,9 @@ const main = defineCommand({
 
         let updated = false
         const scripts = {
-          sync: "bunx rimelight sync && husky && nuxt prepare",
-          "sync:agents": "bunx rimelight sync --agents",
-          "sync:configs": "bunx rimelight sync --configs"
+          sync: "pnpm rimelight sync && pnpm husky && pnpm exec nuxt prepare",
+          "sync:agents": "pnpm rimelight sync --agents",
+          "sync:configs": "pnpm rimelight sync --configs"
         }
 
         for (const [name, command] of Object.entries(scripts)) {
@@ -164,4 +162,4 @@ const main = defineCommand({
   }
 })
 
-runMain(main)
+void runMain(main)

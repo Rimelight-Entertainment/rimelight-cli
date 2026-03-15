@@ -9,8 +9,7 @@
 
 ## Tech Stack
 
-- **Package Manager:** Bun
-- **Build Tool:** Bun
+- **Package Manager:** pnpm
 - **Runtime:** Node (Development) / Wrangler (Production)
 - **Framework:** Nuxt, Vue
 - **Styling:** Tailwind CSS, Tailwind Variants, Nuxt UI
@@ -24,17 +23,18 @@
 - **Key Insights:**
   - **Viewing & Editing Files:** Prefer using your direct tools & skills rather than console commands.
   - **Batch Editing:** If you need to edit multiple files, manually use your direct tools & skills to do so. Do not execute scripts for batch editing as they are not tracked in review history.
-  - **Terminal:** Always use `bun` or `bunx`to run scripts.
+  - **Terminal:** Always use `pnpm` to run scripts.
   - **Chain Commands:** Always use `;` to chain commands instead of `&&`.
   - **Workspace Context:** Projects are standalone applications, **not in a monorepo**. If you see sibling projects in the filesystem, it is likely they simply share the `rimelight-cli` configurations or `rimelight-components` extended Nuxt layer. Do not treat the workspace as a unified monorepo.
+  - **Tool Calls:** You are strictly NOT to use the browser tool unless specifically commanded to.
 
 ## ✅ Verification & Quality Control
 
 At the end of the work, verify it.
 Be mindful that `typecheck` is a slow command, don't execute it multiple times during small changes.
 
-- **Auto-Fix Issues:** Use `bun run fix` (Removes stale i18n keys and adds missing ones, lints, and formats).
-- **Check Remaining Issues:** `bun run check` (i18n Review + Typecheck + Lint + Format).
+- **Auto-Fix Issues:** Use `pnpm run fix` (Removes stale i18n keys and adds missing ones, lints, and formats).
+- **Check Remaining Issues:** `pnpm run check` (i18n Review + Typecheck + Lint + Format).
 
 _You are expected to run these commands and fix any resulting errors before presenting your final solution._
 

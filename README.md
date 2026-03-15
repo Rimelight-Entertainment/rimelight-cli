@@ -9,7 +9,6 @@ LLM configurations are compatible with all major tools (Antigravity, Cursor, Cod
 - Workspace Sync: Pull shared configurations into any project.
 - Agent Hub: Automatically generate instruction files for Gemini, Claude, and Cursor.
 - Modular Sync: Use flags to sync agents or configs independently.
-- Bun First: Built for the modern ecosystem using Bun and TypeScript.
 
 ## Getting Started
 
@@ -18,7 +17,7 @@ LLM configurations are compatible with all major tools (Antigravity, Cursor, Cod
 Add it as a dev dependency from GitHub:
 
 ```bash
-bun add -D github:Rimelight-Entertainment/rimelight-cli
+pnpm add -D github:Rimelight-Entertainment/rimelight-cli
 ```
 
 ### Usage
@@ -26,19 +25,19 @@ bun add -D github:Rimelight-Entertainment/rimelight-cli
 Run the sync command to synchronize all configurations with the reference repository:
 
 ```bash
-bunx rimelight sync
+pnpm rimelight sync
 ```
 
 **Sync LLM Configurations Only:**
 
 ```bash
-bunx rimelight sync --agents
+pnpm rimelight sync --agents
 ```
 
 **Sync Workspace Configurations Only:**
 
 ```bash
-bunx rimelight sync --configs
+pnpm rimelight sync --configs
 ```
 
 ## Synchronized Files
@@ -46,17 +45,17 @@ bunx rimelight sync --configs
 The CLI maintains parity across repositories for the following files:
 
 ### LLM Agent Configuration
+
 - `AGENTS.md`
 - `.agent/rules/`
 - `.agent/skills/`
 - `.agent/workflows/`
 
 ### Development Workspace
+
 - **WebStorm:** `.editorconfig`
-- **Bun:** `bunfig.toml`
 - **Git:** `.gitignore`, `.husky/`, `commitlint.config.ts`
-- **Oxlint:** `oxlint.config.ts` & `.oxlint/` rules
-- **Oxfmt:** `.oxfmtrc.jsonc`
+- **Vite+ Config:** `vite.config.ts`
 
 ## License
 
