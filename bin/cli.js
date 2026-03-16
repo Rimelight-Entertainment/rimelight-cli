@@ -10,9 +10,6 @@ const PROJECT_ROOT = process.cwd()
 
 const TEMPLATES_ROOT = join(__dirname, "..", "templates")
 
-console.log(`[debug] __dirname: ${__dirname}`)
-console.log(`[debug] TEMPLATES_ROOT: ${TEMPLATES_ROOT}`)
-
 const AGENTS = [
   { name: "Gemini", folder: ".gemini", file: "GEMINI.md" },
   { name: "Antigravity", folder: ".antigravity", file: "ANTIGRAVITY.md" },
