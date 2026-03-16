@@ -1,19 +1,19 @@
 # Rimelight CLI
-# AI Agents Configuration
-.agent/
-.agents/
-_agent/
-_agents/
-.gemini/
-.claude/
-.cursor/
-.antigravity/
-AGENTS.md
-CLAUDE.md
-GEMINI.md
-CURSOR.md
-ANTIGRAVITY.md
-.cursorrules
+# AI Agents Configuration (Root level only)
+/.agent/
+/.agents/
+/_agent/
+/_agents/
+/.gemini/
+/.claude/
+/.cursor/
+/.antigravity/
+/AGENTS.md
+/CLAUDE.md
+/GEMINI.md
+/CURSOR.md
+/ANTIGRAVITY.md
+/.cursorrules
 
 # Outputs
 .output

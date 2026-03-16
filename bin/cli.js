@@ -58,7 +58,8 @@ const main = defineCommand({
     if (syncConfigs) {
       console.log("📦 Syncing configs...")
       for (const item of DIRECT_SYNC) {
-        const sourcePath = join(TEMPLATES_ROOT, item)
+        const sourceName = item === ".gitignore" ? "gitignore.template" : item
+        const sourcePath = join(TEMPLATES_ROOT, sourceName)
         const destPath = join(PROJECT_ROOT, item)
 
         // Skip syncing to self if running from within the dev repo
