@@ -1,16 +1,23 @@
 {
   "name": "rimelight-cli",
-  "version": "1.0.2",
-  "private": true,
   "description": "A CLI utility for configuration synchronization across multiple projects.",
+  "homepage": "https://rimelight.com/tools/rimelight-cli",
+  "author": {
+    "name": "Daniel Marchi",
+    "email": "danielmarchi@danielmarchi.dev",
+    "url": "https://danielmarchi.dev"
+  },
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Rimelight-Entertainment/rimelight-cli.git"
+    "url": "git+https://github.com/Rimelight-Entertainment/rimelight-cli.git"
   },
   "bin": {
     "rimelight": "./bin/cli.js"
   },
-  "type": "module",
   "scripts": {
 
   },
