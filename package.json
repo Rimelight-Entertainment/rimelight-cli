@@ -15,8 +15,7 @@
 
   },
   "dependencies": {
-    "citty": "^0.1.6",
-    "tsx": "^4.21.0"
+    "citty": "^0.1.6"
   },
   "devDependencies": {
     "@types/node": "latest",
