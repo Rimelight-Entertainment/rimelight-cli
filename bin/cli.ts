@@ -24,7 +24,9 @@ const DIRECT_SYNC = [
   ".gitignore",
   ".editorconfig",
   "vite.config.ts",
-  ".oxlint"
+  ".oxlint",
+  "tsconfig.json",
+  "vue-i18n-extract.config.js"
 ]
 
 const main = defineCommand({
