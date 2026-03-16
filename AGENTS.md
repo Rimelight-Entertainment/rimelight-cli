@@ -10,12 +10,19 @@
 ## Tech Stack
 
 - **Package Manager:** pnpm
-- **Runtime:** Node (Development) / Wrangler (Production)
+- **IDE:** WebStorm
+- **Version Control:** Git
+- **Build Tool:** Vite / Rolldown (Vite+)
+- **Linting:** Oxlint (Vite+)
+- **Formatting:** Oxfmt (Vite+)
+- **Testing:** Vitest (Vite+)
+- **CI/CD:** GitHub Actions
+- **Runtime:** Node (Develoment) / Wrangler (Production)
+- **Deployment:** Cloudflare Workers
 - **Framework:** Nuxt, Vue
 - **Styling:** Tailwind CSS, Tailwind Variants, Nuxt UI
 - **Language:** TypeScript (Strict)
 - **Database:** PostgreSQL, Drizzle ORM
-- **Linting/Formatting:** Oxlint, Oxfmt (ESlint & Prettier-compatible)
 
 ## 💻 Development Environment
 
@@ -23,7 +30,16 @@
 - **Key Insights:**
   - **Viewing & Editing Files:** Prefer using your direct tools & skills rather than console commands.
   - **Batch Editing:** If you need to edit multiple files, manually use your direct tools & skills to do so. Do not execute scripts for batch editing as they are not tracked in review history.
-  - **Terminal:** Always use `pnpm` to run scripts.
+  - **Terminal:** Always use `vp` to run scripts.
+    - vp create # Create a new project
+    - vp install # Install dependencies
+    - vp dev # Start the dev server
+    - vp check # Format, lint, type-check
+    - vp lint # Run Oxlint
+    - vp fmt # Run Oxfmt
+    - vp test # Run vitest tests
+    - vp run # Run built-in commands and package.json scripts
+    - vp build # Build for production
   - **Chain Commands:** Always use `;` to chain commands instead of `&&`.
   - **Workspace Context:** Projects are standalone applications, **not in a monorepo**. If you see sibling projects in the filesystem, it is likely they simply share the `rimelight-cli` configurations or `rimelight-components` extended Nuxt layer. Do not treat the workspace as a unified monorepo.
   - **Tool Calls:** You are strictly NOT to use the browser tool unless specifically commanded to.

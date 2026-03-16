@@ -54,7 +54,7 @@ The CLI maintains parity across repositories for the following files:
 ### Development Workspace
 
 - **WebStorm:** `.editorconfig`
-- **Git:** `.gitignore`, `.husky/`, `commitlint.config.ts`
+- **Git:** `.gitignore`
 - **Vite+ Config:** `vite.config.ts`
 
 ## License

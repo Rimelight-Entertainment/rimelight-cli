@@ -12,7 +12,7 @@
   },
   "type": "module",
   "scripts": {
-    "sync": "tsx bin/cli.ts sync"
+
   },
   "dependencies": {
     "citty": "^0.1.6",

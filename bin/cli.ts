@@ -126,38 +126,7 @@ const main = defineCommand({
       }
     }
 
-    // 3. Package JSON Scripts Sync
-    if (SHARED_ROOT !== PROJECT_ROOT) {
-      const pkgPath = join(PROJECT_ROOT, "package.json")
-      try {
-        const pkgText = await readFile(pkgPath, "utf-8")
-        const pkg = JSON.parse(pkgText)
-        pkg.scripts = pkg.scripts || {}
-
-        let updated = false
-        const scripts = {
-          sync: "vp run rimelight sync && vp run exec nuxt prepare",
-          "sync:agents": "vp run rimelight sync --agents",
-          "sync:configs": "vp run rimelight sync --configs"
-        }
-
-        for (const [name, command] of Object.entries(scripts)) {
-          if (pkg.scripts[name] !== command) {
-            pkg.scripts[name] = command
-            updated = true
-          }
-        }
-
-        if (updated) {
-          await writeFile(pkgPath, JSON.stringify(pkg, null, 2) + "\n")
-          console.log("  ✅ package.json scripts updated")
-        }
-      } catch {
-        // No package.json or invalid JSON
-      }
-    }
-
-    console.log("✨ Sync complete.")
+    console.log("Sync complete.")
   }
 })
 
