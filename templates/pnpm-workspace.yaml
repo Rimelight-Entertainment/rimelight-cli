@@ -1,4 +1,4 @@
-minimumReleaseAge: 4320 # Minutes = 3 Days
+#minimumReleaseAge: 4320 # Minutes = 3 Days
 minimumReleaseAgeExclude:
   - "@rimelight/*"
   - "rimelight-cli"
