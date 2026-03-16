@@ -8,7 +8,7 @@
     "url": "https://github.com/Rimelight-Entertainment/rimelight-cli.git"
   },
   "bin": {
-    "rimelight": "./bin/cli.ts"
+    "rimelight": "./bin/cli.js"
   },
   "type": "module",
   "scripts": {

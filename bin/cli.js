@@ -1,4 +1,4 @@
-#!/usr/bin/env node --import tsx
+#!/usr/bin/env node
 import { cp, readFile, writeFile, mkdir, rm } from "node:fs/promises"
 import { join, dirname } from "node:path"
 import { fileURLToPath } from "node:url"
@@ -9,6 +9,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const PROJECT_ROOT = process.cwd()
 
 const TEMPLATES_ROOT = join(__dirname, "..", "templates")
+
+console.log(`[debug] __dirname: ${__dirname}`)
+console.log(`[debug] TEMPLATES_ROOT: ${TEMPLATES_ROOT}`)
 
 const AGENTS = [
   { name: "Gemini", folder: ".gemini", file: "GEMINI.md" },
