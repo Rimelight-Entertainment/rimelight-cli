@@ -8,8 +8,7 @@ import { defineCommand, runMain } from "citty"
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const PROJECT_ROOT = process.cwd()
 
-// SHARED_ROOT is the package directory
-const SHARED_ROOT = join(__dirname, "..")
+const TEMPLATES_ROOT = join(__dirname, "..", "templates")
 
 const AGENTS = [
   { name: "Gemini", folder: ".gemini", file: "GEMINI.md" },
@@ -59,7 +58,7 @@ const main = defineCommand({
     if (syncConfigs) {
       console.log("📦 Syncing configs...")
       for (const item of DIRECT_SYNC) {
-        const sourcePath = join(SHARED_ROOT, item)
+        const sourcePath = join(TEMPLATES_ROOT, item)
         const destPath = join(PROJECT_ROOT, item)
 
         // Skip syncing to self if running from within the dev repo
@@ -77,7 +76,7 @@ const main = defineCommand({
     // 2. AGENTS.md Processing & Agent Folder Sync
     if (syncAgents) {
       console.log("🤖 Syncing agent instructions...")
-      const agentsMdPath = join(SHARED_ROOT, "AGENTS.md")
+      const agentsMdPath = join(TEMPLATES_ROOT, "AGENTS.md")
       let agentsMdContent = ""
       try {
         agentsMdContent = await readFile(agentsMdPath, "utf-8")
@@ -87,7 +86,7 @@ const main = defineCommand({
 
       if (agentsMdContent) {
         // Skip if in own repo
-        if (SHARED_ROOT === PROJECT_ROOT) {
+        if (join(__dirname, "..") === PROJECT_ROOT) {
           console.log("ℹ️  Skipping agent generation in self-sync.")
         } else {
           for (const agent of AGENTS) {
@@ -100,7 +99,7 @@ const main = defineCommand({
             // Sync shared rules/workflows to agent folder
             const sharedFolders = ["rules", "workflows", "skills"]
             for (const folder of sharedFolders) {
-              const sourceFolder = join(SHARED_ROOT, ".agent", folder)
+              const sourceFolder = join(TEMPLATES_ROOT, ".agent", folder)
               const destFolder = join(agentRoot, folder)
               try {
                 await cp(sourceFolder, destFolder, { recursive: true, force: true })
