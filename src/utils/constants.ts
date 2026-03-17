@@ -3,7 +3,7 @@ import { join } from "node:path"
 export const CLI_NAME = "rimelight"
 export const PROJECT_ROOT = process.cwd()
 
-// Robust root detection for both dev (src/utils/constants.ts) and dist (dist/bin.js)
+// Root detection for both dev (src/utils/constants.ts) and dist (dist/bin.js)
 export const CLI_ROOT = import.meta.dirname.endsWith("utils") 
   ? join(import.meta.dirname, "../..") 
   : join(import.meta.dirname, "..")
