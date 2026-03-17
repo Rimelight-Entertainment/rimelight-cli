@@ -169,7 +169,8 @@ const SYNC_GROUPS = {
 		},
 		{
 			mode: "overwrite",
-			source: ".editorconfig"
+			source: "editorconfig.template",
+			destinations: ".editorconfig"
 		},
 		{
 			mode: "overwrite",

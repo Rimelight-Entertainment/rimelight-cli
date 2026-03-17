@@ -45,7 +45,8 @@ export const SYNC_GROUPS: SyncGroups = {
     },
     { 
       mode: "overwrite", 
-      source: ".editorconfig" 
+      source: "editorconfig.template", 
+      destinations: ".editorconfig" 
     },
     { 
       mode: "overwrite", 
