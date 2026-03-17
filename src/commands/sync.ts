@@ -87,12 +87,21 @@ async function patchConfig(patch: { target: string, key: string, importName: str
   if (content === null) return
 
   const ensureImport = (stmt: string, check: string) => {
-    if (!content!.includes(check)) {
+    const lines = content!.split("\n")
+    const importIndex = lines.findIndex(l => l.includes(check) && l.includes("import"))
+    
+    if (importIndex !== -1) {
+      // If the import exists but doesn't match the new statement, update it
+      if (!lines[importIndex].includes(stmt)) {
+         lines[importIndex] = stmt
+         content = lines.join("\n")
+      }
+    } else {
       content = stmt + "\n" + content
     }
   }
 
-  ensureImport(`import { ${patch.importName} } from "./${definitionFile.replace(".ts", "")}"`, patch.importName)
+  ensureImport(`import { ${patch.importName} } from "./${definitionFile.replace(".ts", "").replace(/\\/g, "/")}"`, patch.importName)
   ensureImport('import { defu } from "defu"', 'import { defu } from "defu"')
 
   const match = content.match(new RegExp(`${patch.key}:\\s*`))

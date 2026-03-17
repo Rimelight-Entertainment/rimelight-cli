@@ -6,6 +6,7 @@ import { playwright } from "vite-plus/test/browser-playwright"
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export const rimelightViteConfig = {
+  clearScreen: false,
   server: {},
   build: {},
   preview: {},
@@ -14,9 +15,9 @@ export const rimelightViteConfig = {
       {
         resolve: {
           alias: {
-            "~": resolve(__dirname, "app"),
-            "#shared": resolve(__dirname, "shared"),
-            "#server": resolve(__dirname, "server")
+            "~": resolve(__dirname, "..", "app"),
+            "#shared": resolve(__dirname, "..", "shared"),
+            "#server": resolve(__dirname, "..", "server")
           }
         },
         test: {
@@ -32,7 +33,7 @@ export const rimelightViteConfig = {
           environment: "nuxt",
           environmentOptions: {
             nuxt: {
-              rootDir: fileURLToPath(new URL(".", import.meta.url)),
+              rootDir: fileURLToPath(new URL("..", import.meta.url)),
               overrides: {
                 vue: {
                   runtimeCompiler: true
@@ -63,7 +64,7 @@ export const rimelightViteConfig = {
     }
   },
   lint: {
-    jsPlugins: [resolve(__dirname, "./.oxlint/rimelight.js")],
+    jsPlugins: [resolve(__dirname, "..", ".oxlint", "rimelight.js")],
     ignorePatterns: [
       "dist/**",
       ".agent/",
