@@ -16,16 +16,21 @@
     "url": "git+https://github.com/Rimelight-Entertainment/rimelight-cli.git"
   },
   "bin": {
-    "rimelight": "./bin/cli.js"
+    "rimelight": "./bin/rimelight"
   },
   "scripts": {
-
+    "build": "rolldown -c rolldown.config.ts",
+    "prepare": "pnpm run build"
   },
   "dependencies": {
-    "citty": "^0.1.6"
+    "defu": "^6.1.4",
+    "mri": "^1.2.0"
   },
   "devDependencies": {
     "@types/node": "latest",
+    "rolldown": "1.0.0-rc.9",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
     "vite-plus": "^0.1.8"
   },
   "packageManager": "pnpm@10.32.1"
