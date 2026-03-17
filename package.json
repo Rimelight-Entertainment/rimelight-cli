@@ -19,8 +19,7 @@
     "rimelight": "./bin/rimelight"
   },
   "scripts": {
-    "build": "rolldown -c rolldown.config.ts",
-    "prepare": "pnpm run build"
+    "build": "rolldown -c rolldown.config.ts"
   },
   "dependencies": {
     "defu": "^6.1.4",
