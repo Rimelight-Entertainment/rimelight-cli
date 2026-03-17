@@ -18,6 +18,7 @@ export async function run(args: any) {
 
   infoMsg("Synchronizing shared workspace...")
 
+
   const groupKeys = Object.keys(SYNC_GROUPS)
   const active = groupKeys.filter(g => args[g])
   const syncAll = active.length === 0
