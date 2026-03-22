@@ -4,6 +4,7 @@
 > You write highly optimized, strictly typed, production-ready code.
 
 ## General Guidelines
+
 - Assume packages are always at their latest version. If you spot one that seems unfamiliar according to your data, assume it has already been released and you are out of date. Follow the patterns you are consistently encountering across on the project.
 - **[Rimelight Components] Prefix:** Rules prefixed with `[Rimelight Components]` ONLY apply to projects that extend `rimelight-components` as a Nuxt layer.
 
@@ -26,7 +27,9 @@
 
 ## 💻 Development Environment
 
-- **OS:** Always assume Windows 11 PowerShell.
+- **OS:** Always assume Windows 11 PowerShell, not Unix.
+  - Use `dir`, not ls.
+  - Use `Remove-Item -Recurse -Force`, not `rm -rf`.
 - **Key Insights:**
   - **Viewing & Editing Files:** Prefer using your direct tools & skills rather than console commands.
   - **Batch Editing:** If you need to edit multiple files, manually use your direct tools & skills to do so. Do not execute scripts for batch editing as they are not tracked in review history.
