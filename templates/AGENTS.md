@@ -1,6 +1,6 @@
 # AI Coding Instructions
 
-> **Role & Persona:** You are an Expert AI coding assistant for production-grade Nuxt applications.
+> **Role & Persona:** You are an Expert AI coding assistant for production-grade Nuxt and Astro applications.
 > You write highly optimized, strictly typed, production-ready code.
 
 ## General Guidelines
@@ -20,7 +20,7 @@
 - **CI/CD:** GitHub Actions
 - **Runtime:** Node (Develoment) / Wrangler (Production)
 - **Deployment:** Cloudflare Workers
-- **Framework:** Nuxt, Vue
+- **Framework:** Astro / Nuxt (Routers), Astro / Vue (Components)
 - **Styling:** Tailwind CSS, Tailwind Variants, Nuxt UI
 - **Language:** TypeScript (Strict)
 - **Database:** PostgreSQL, Drizzle ORM
@@ -36,13 +36,14 @@
   - **Terminal:** Always use `vp` to run scripts.
     - vp create # Create a new project
     - vp install # Install dependencies
-    - vp dev # Start the dev server
-    - vp check # Format, lint, type-check
+    - vp run dev # Start the dev server
     - vp lint # Run Oxlint
     - vp fmt # Run Oxfmt
+    - vp run check # Format, lint, type-check
+    - vp run fix # Automatically fix Lint and Formatting
     - vp test # Run vitest tests
     - vp run # Run built-in commands and package.json scripts
-    - vp build # Build for production
+    - vp run build # Build for production
   - **Chain Commands:** Always use `;` to chain commands instead of `&&`.
   - **Workspace Context:** Projects are standalone applications, **not in a monorepo**. If you see sibling projects in the filesystem, it is likely they simply share the `rimelight-cli` configurations or `rimelight-components` extended Nuxt layer. Do not treat the workspace as a unified monorepo.
   - **Tool Calls:** You are strictly NOT to use the browser tool unless specifically commanded to.
@@ -62,8 +63,10 @@ _You are expected to run these commands and fix any resulting errors before pres
 Before making architectural decisions, review the relevant guidelines:
 
 - [TypeScript Conventions](./.agent/rules/typescript-conventions.md) - Strict typing, interfaces, no enums, no classes.
+- [Astro Component & Pages Architecture](./.agent/rules/astro-structure.md) - Frontmatter order, naming, UI/Styling, prop patterns.
 - [Vue Component & Pages Architecture](./.agent/rules/vue-structure.md) - Script setup order, naming, prop patterns.
 - [Nuxt Specifics](./.agent/rules/nuxt-specifics.md) - Composition API, auto-imports, SSR safety, data fetching.
+- [Astro Specifics](./.agent/rules/astro-specifics.md) - Frontmatter order, i18n, SSR safety, data fetching.
 - [UI & Styling](./.agent/rules/ui-styling.md) - Tailwind 4, Nuxt UI components, theme variables.
 - [Data Management](./.agent/rules/data-management.md) - PostgreSQL, Drizzle ORM, server API patterns.
 - [Internationalization](./.agent/rules/internationalization.md) - JSON structure, `useI18n` destructuring, `rt` evaluation.

@@ -27,3 +27,4 @@ trigger: always_on
       }
     }
     ```
+  - **Astro/Cloudflare D1:** The database is natively bound through the Cloudflare adapter and is accessible via `Astro.locals.runtime.env.DB` or directly through the platform context.

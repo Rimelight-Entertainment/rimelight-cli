@@ -1,0 +1,57 @@
+---
+import type { ComponentProps } from "astro/types";
+import Image from "./Image.astro";
+
+type Props = ComponentProps<typeof Image> & {
+  darkSrc?: any;
+};
+
+const { src, darkSrc, class: className, ...rest } = Astro.props;
+
+const isSvg = (source: any) => {
+  if (!source) return false;
+  const url = typeof source === 'string' ? source : (source.src || '');
+  if (!url) return false;
+  return url.split('?')[0].toLowerCase().endsWith('.svg') || source.format === 'svg';
+};
+
+const getSrc = (source: any) => {
+  if (typeof source === 'string') return source;
+  return source?.src || source;
+};
+---
+
+{
+  darkSrc ? (
+    <div class="contents group/extended-image">
+      {isSvg(src) ? (
+        <img src={getSrc(src)} class:list={[className, "extended-image-light"]} {...rest} />
+      ) : (
+        <Image src={src} class:list={[className, "extended-image-light"]} {...rest} />
+      )}
+      {isSvg(darkSrc) ? (
+        <img src={getSrc(darkSrc)} class:list={[className, "extended-image-dark"]} {...rest} />
+      ) : (
+        <Image src={darkSrc} class:list={[className, "extended-image-dark"]} {...rest} />
+      )}
+    </div>
+  ) : isSvg(src) ? (
+    <img src={getSrc(src)} class={className} {...rest} />
+  ) : (
+    <Image src={src} class={className} {...rest} />
+  )
+}
+
+<style>
+  .extended-image-dark {
+    display: none;
+  }
+  
+  :global(.dark) .extended-image-light {
+    display: none;
+  }
+  
+  :global(.dark) .extended-image-dark {
+    display: block;
+  }
+</style>
