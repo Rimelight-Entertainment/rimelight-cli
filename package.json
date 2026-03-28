@@ -21,19 +21,20 @@
   "scripts": {
     "build": "rolldown -c rolldown.config.ts"
   },
-  "exports": {
+    "exports": {
     ".": "./bin/rimelight",
-    "./components/*": "./src/components/starwind/*.astro",
-    "./starwind/*": "./src/components/starwind/*/index.ts",
-    "./utils/*": "./src/lib/utils/starwind/*.ts",
-    "./styles/*": "./src/styles/*.css"
+    "./starwind/*": "./src/components/starwind/*",
+    "./utils/*": "./src/lib/utils/starwind/*",
+    "./styles/*": "./src/styles/*"
   },
   "dependencies": {
     "clsx": "^2.1.1",
     "defu": "^6.1.4",
     "mri": "^1.2.0",
     "tailwind-merge": "^3.0.1",
-    "tailwind-variants": "^3.2.2"
+    "tailwind-variants": "^3.2.2",
+    "@tabler/icons": "^3.41.0",
+    "embla-carousel": "^8.6.0"
   },
   "devDependencies": {
     "@types/node": "latest",
