@@ -23,7 +23,8 @@
   },
     "exports": {
     ".": "./bin/rimelight",
-    "./starwind/*": "./src/components/starwind/*",
+    "./starwind/*.astro": "./src/components/starwind/*.astro",
+    "./starwind/*": "./src/components/starwind/*/index.ts",
     "./utils/*": "./src/lib/utils/starwind/*",
     "./styles/*": "./src/styles/*"
   },
