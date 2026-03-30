@@ -31,18 +31,15 @@
   - Use `dir`, not ls.
   - Use `Remove-Item -Recurse -Force`, not `rm -rf`.
 - **Key Insights:**
-  - **Viewing & Editing Files:** Prefer using your direct tools & skills rather than console commands.
-  - **Batch Editing:** If you need to edit multiple files, manually use your direct tools & skills to do so. Do not execute scripts for batch editing as they are not tracked in review history.
-  - **Terminal:** Always use `vp` to run scripts.
-    - vp create # Create a new project
+  - **Viewing & Editing Files:** Prefer using your direct tools & skills like `grep_search`, `view_file`, and `write` rather than direct console commands like `cat`, `ls`, `grep`, or `sed`.
+  - **Batch Editing:** If you need to edit multiple files, manually use your direct tools & skills to do so. Do not execute scripts like cat, ls, grep, or sed for batch editing as they are not tracked in review history.
+  - **Terminal:** Always use `vp` to run scripts - not pnpm directly. Always prefix with `vp run`, not `vp`, to ensure package.json scripts are prioritized.
     - vp install # Install dependencies
+    - vp run # Run built-in commands and package.json scripts
     - vp run dev # Start the dev server
-    - vp lint # Run Oxlint
-    - vp fmt # Run Oxfmt
     - vp run check # Format, lint, type-check
     - vp run fix # Automatically fix Lint and Formatting
-    - vp test # Run vitest tests
-    - vp run # Run built-in commands and package.json scripts
+    - vp run test # Run vitest tests
     - vp run build # Build for production
   - **Chain Commands:** Always use `;` to chain commands instead of `&&`.
   - **Workspace Context:** Projects are standalone applications, **not in a monorepo**. If you see sibling projects in the filesystem, it is likely they simply share the `rimelight-cli` configurations or `rimelight-components` extended Nuxt layer. Do not treat the workspace as a unified monorepo.
